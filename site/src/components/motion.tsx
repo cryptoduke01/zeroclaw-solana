@@ -28,7 +28,10 @@ export function FadeUp({
   as?: "div" | "section" | "li" | "header" | "footer";
 } & Omit<HTMLMotionProps<"div">, "children" | "className">) {
   const reduce = useReducedMotion();
-  const Comp = motion[Tag];
+  // motion[Tag] is a union of motion components; the shared animated props
+  // (y, whileInView, …) are common to every HTML element, so pin the type to
+  // one concrete component to keep the spread props assignable.
+  const Comp = motion[Tag] as typeof motion.div;
 
   if (reduce) {
     const Static = Tag;
