@@ -24,11 +24,6 @@ const guides = [
     href: `${REPO}/blob/main/docs/wasm-notes.md`,
     body: "What was hard about compiling Solana tooling into a WIT component, and what solved it.",
   },
-  {
-    title: "Writing style",
-    href: `${REPO}/blob/main/docs/writing-style.md`,
-    body: "Simplified Technical English (ASD-STE100) rules and term list for the suite.",
-  },
 ];
 
 const plugins = [
@@ -68,9 +63,8 @@ export default function DocsPage() {
         Documentation
       </h1>
       <p className="mt-4 max-w-xl text-[1.05rem] leading-relaxed text-ink-dim">
-        Canonical docs live in the repository, written in Simplified Technical
-        English. Start with custody if you care about safety, or install if you
-        want to run the tools today.
+        Canonical docs live in the repository. Start with custody if you care
+        about safety, or install if you want to run the tools today.
       </p>
 
       <h2 className="mt-16 text-2xl font-semibold tracking-tight text-ink">

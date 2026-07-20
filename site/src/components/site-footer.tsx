@@ -1,8 +1,10 @@
 import Link from "next/link";
+import { GitHubIcon } from "@/components/github-icon";
 import { REPO } from "@/lib/utils";
 
+const X_URL = "https://x.com/dukedotsol";
+
 const links = [
-  { href: REPO, label: "GitHub", external: true },
   { href: "/docs/", label: "Docs", external: false },
   {
     href: `${REPO}/blob/main/docs/custody.md`,
@@ -13,22 +15,61 @@ const links = [
 ];
 
 /**
- * Sparse footer + oversized wordmark. No tagline pile-up.
+ * Sparse footer + oversized wordmark. Builder credit is real: @dukedotsol.
  */
 export function SiteFooter() {
   return (
     <footer className="relative mt-24 overflow-hidden border-t border-line bg-void">
       <div className="mx-auto max-w-5xl px-6 pb-4 pt-16 sm:px-8">
         <div className="flex flex-col gap-10 sm:flex-row sm:items-start sm:justify-between">
-          <p className="max-w-sm text-lg font-medium leading-snug tracking-tight text-ink sm:text-xl">
-            Solana hands for a self-hosted agent. The agent proposes. You
-            dispose.
-          </p>
+          <div className="max-w-sm">
+            <p className="text-lg font-medium leading-snug tracking-tight text-ink sm:text-xl">
+              Solana hands for a self-hosted agent. The agent proposes. You
+              dispose.
+            </p>
+            <p className="mt-4 text-[0.92rem] text-ink-dim">
+              Built by{" "}
+              <a
+                href={X_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-ink transition-colors duration-150 hover:text-signal"
+              >
+                @dukedotsol
+              </a>
+            </p>
+          </div>
 
           <nav
-            className="flex flex-wrap gap-x-6 gap-y-3 sm:justify-end"
+            className="flex flex-wrap items-center gap-x-6 gap-y-3 sm:justify-end"
             aria-label="Footer"
           >
+            <a
+              href={REPO}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex min-h-10 min-w-10 items-center justify-center text-ink-dim transition-colors duration-150 hover:text-ink"
+              aria-label="Onca on GitHub"
+            >
+              <GitHubIcon />
+            </a>
+            <a
+              href={X_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex min-h-10 min-w-10 items-center justify-center text-ink-dim transition-colors duration-150 hover:text-ink"
+              aria-label="@dukedotsol on X"
+            >
+              <svg
+                viewBox="0 0 16 16"
+                width="16"
+                height="16"
+                fill="currentColor"
+                aria-hidden="true"
+              >
+                <path d="M12.6 1.5h2.2l-4.8 5.5 5.6 7.5h-4.4l-3.4-4.5-3.9 4.5H1.7l5.1-5.9L1.4 1.5h4.5l3.1 4.1 3.6-4.1Zm-.8 11.7h1.2L4.3 2.7H3L11.8 13.2Z" />
+              </svg>
+            </a>
             {links.map((link) =>
               link.external ? (
                 <a

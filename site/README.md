@@ -1,31 +1,35 @@
 # site
 
-The marketing and documentation site for Onca. It lives in the same repo as the
-plugins, under `site/`, and deploys on its own.
+Marketing site for [Onca](https://github.com/cryptoduke01/onca) — Solana tools
+for the ZeroClaw agent runtime.
+
+This folder lives inside the monorepo on purpose. Plugin source stays under
+`plugins/` and `crates/`. The site never needs to enter those trees.
 
 ## Stack
 
 - Next.js 15 (App Router, static export)
 - Tailwind CSS v4
 - Instrument Sans (`next/font`)
-- Motion (available for deliberate animation)
 
 ## Develop
 
-Run from this `site/` directory:
-
 ```bash
+cd site
 npm install
 npm run dev      # http://localhost:3000
-npm run build    # static output in out/
+npm run build    # static output in site/out/
 ```
 
 ## Deploy
 
-A push to `main` that touches `site/**` builds this directory and publishes it to
-GitHub Pages via `.github/workflows/site.yml` at the repo root. The workflow sets
-`NEXT_PUBLIC_BASE_PATH=/onca` so the site works under the Pages path. For a root
-deploy (Vercel, or a custom domain), leave that unset.
+Push to `main` under `site/**` runs `.github/workflows/site.yml` and publishes
+to GitHub Pages. The workflow sets:
+
+- `NEXT_PUBLIC_BASE_PATH=/onca`
+- `NEXT_PUBLIC_SITE_URL=https://cryptoduke01.github.io/onca`
+
+For a root domain (Vercel / custom domain), leave those unset.
 
 ## Brand
 
@@ -34,4 +38,4 @@ See [brand.md](brand.md). Design follows the
 
 ## License
 
-MIT.
+MIT (same as the monorepo root).

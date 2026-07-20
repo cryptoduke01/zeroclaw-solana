@@ -7,7 +7,7 @@
   --surface-2: #121216;
   --ink: #f5f5f7;
   --ink-dim: #9a9aa3;
-  --ink-faint: #5c5c66;
+  --ink-faint: #7c7c86;
   --signal: #6ea8ff;
   --signal-deep: #3d6fbf;
   --ok: #5cb88a;
@@ -19,8 +19,13 @@
   --nav-border: rgba(255, 255, 255, 0.08);
   --card: #f7f7f8;
   --card-ink: #18181b;
-  --card-muted: #71717a;
-  --card-faint: #a1a1aa;
+  --card-muted: #63636b;
+  --card-faint: #70707a;
+  /* Card is always light in both themes, so its accents are fixed and dark
+     enough to clear AA on a near-white fill. */
+  --card-signal: #3d6fbf;
+  --card-bad: #c4463a;
+  --card-ok: #2c7d55;
   --card-line: rgba(0, 0, 0, 0.07);
   --card-tab: rgba(0, 0, 0, 0.06);
   --card-foot: rgba(255, 255, 255, 0.72);
@@ -41,7 +46,7 @@ html.light {
   --surface-2: #eceef2;
   --ink: #0c0c0e;
   --ink-dim: #5c5c66;
-  --ink-faint: #8b8b96;
+  --ink-faint: #6d6d77;
   --signal: #3d6fbf;
   --signal-deep: #2a5299;
   --ok: #2f8f63;
@@ -53,8 +58,11 @@ html.light {
   --nav-border: rgba(12, 12, 14, 0.08);
   --card: #ffffff;
   --card-ink: #18181b;
-  --card-muted: #71717a;
-  --card-faint: #a1a1aa;
+  --card-muted: #63636b;
+  --card-faint: #70707a;
+  --card-signal: #3d6fbf;
+  --card-bad: #c4463a;
+  --card-ok: #2c7d55;
   --card-line: rgba(0, 0, 0, 0.08);
   --card-tab: rgba(0, 0, 0, 0.05);
   --card-foot: #f0f1f4;
@@ -93,6 +101,9 @@ html.light {
   --color-card-line: var(--card-line);
   --color-card-tab: var(--card-tab);
   --color-card-foot: var(--card-foot);
+  --color-card-signal: var(--card-signal);
+  --color-card-bad: var(--card-bad);
+  --color-card-ok: var(--card-ok);
   --color-btn: var(--btn);
   --color-btn-ink: var(--btn-ink);
   --color-btn-hover: var(--btn-hover);

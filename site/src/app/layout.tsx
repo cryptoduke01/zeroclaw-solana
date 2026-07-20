@@ -13,7 +13,7 @@ const instrument = Instrument_Sans({
 });
 
 const siteUrl =
-  process.env.NEXT_PUBLIC_SITE_URL ?? "https://cryptoduke01.github.io/onca-site";
+  process.env.NEXT_PUBLIC_SITE_URL ?? "https://cryptoduke01.github.io/onca";
 
 export const metadata: Metadata = {
   title: {

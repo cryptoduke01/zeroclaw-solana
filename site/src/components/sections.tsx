@@ -20,8 +20,8 @@ export function CustodySection() {
     {
       tier: "T2",
       title: "Sign & send",
-      body: "One successful injection empties a wallet. Onca does not take this rung.",
-      mark: "refused",
+      body: "Signs and submits. One successful prompt injection can empty a session key. Onca never holds a spendable key, so this rung is out of scope on purpose.",
+      mark: "by design",
       on: false,
     },
   ];
@@ -33,12 +33,13 @@ export function CustodySection() {
           <h2 className="text-[clamp(1.85rem,4vw,2.85rem)] font-semibold leading-[1.08] tracking-tight text-ink">
             Two safe rungs.
             <br />
-            <span className="text-ink-dim">One we refuse.</span>
+            <span className="text-ink-dim">T2 stays off the board.</span>
           </h2>
           <p className="max-w-md text-[1.05rem] leading-relaxed text-ink-dim">
-            An agent joins a private key to a model that reads untrusted text all
-            day. Onca stays where the model cannot spend. The agent proposes. A
-            person disposes.
+            The bounty scores T0 and T1 highest for a reason. An agent with a
+            private key and an LLM in the loop is a hot wallet with a prompt
+            injection surface. Onca ships only tools that read or build. The
+            agent proposes. You dispose.
           </p>
         </div>
 

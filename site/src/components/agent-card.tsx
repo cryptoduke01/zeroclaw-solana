@@ -48,7 +48,7 @@ const panes: Record<
         role: "onca",
         text: (
           <>
-            Token risk · <strong className="font-semibold text-bad">RED</strong> · 3 flags
+            Token risk · <strong className="font-semibold text-card-bad">RED</strong> · 3 flags
           </>
         ),
       },
@@ -73,7 +73,7 @@ const panes: Record<
         role: "onca",
         text: (
           <>
-            Paid · <strong className="font-semibold text-ok">25 USDC</strong> from 9WzD…AWWM
+            Paid · <strong className="font-semibold text-card-ok">25 USDC</strong> from 9WzD…AWWM
           </>
         ),
       },
@@ -120,13 +120,13 @@ export function AgentCard() {
   return (
     <div
       className={cn(
-        "w-full max-w-2xl overflow-hidden rounded-[1.15rem]",
+        "w-full min-w-0 max-w-2xl overflow-hidden rounded-[1.15rem]",
         "border border-card-line bg-card",
         "shadow-[0_1px_0_rgba(255,255,255,0.55)_inset,0_28px_64px_-18px_rgba(0,0,0,0.55)]"
       )}
     >
       {/* Title bar with traffic lights */}
-      <div className="flex items-center gap-3 border-b border-card-line px-4 py-3 sm:px-5">
+      <div className="flex flex-wrap items-center gap-3 border-b border-card-line px-4 py-3 sm:flex-nowrap sm:px-5">
         <div className="flex shrink-0 items-center gap-1.5" aria-hidden="true">
           <span className="h-3 w-3 rounded-full bg-[#ff5f57]" />
           <span className="h-3 w-3 rounded-full bg-[#febc2e]" />
@@ -141,7 +141,7 @@ export function AgentCard() {
           </p>
         </div>
         <div
-          className="flex shrink-0 gap-0.5 rounded-lg bg-card-tab p-0.5"
+          className="flex w-full shrink-0 gap-0.5 rounded-lg bg-card-tab p-0.5 sm:w-auto"
           role="tablist"
           aria-label="Onca tools"
         >
@@ -173,6 +173,7 @@ export function AgentCard() {
           <p
             key={i}
             className={cn(
+              "[overflow-wrap:anywhere]",
               line.dim && "pl-[3.6rem] text-card-faint",
               !line.dim && "text-card-ink/90"
             )}
@@ -181,7 +182,7 @@ export function AgentCard() {
               <span
                 className={cn(
                   "inline-block w-[3.6rem] shrink-0",
-                  line.role === "onca" ? "text-signal" : "text-card-faint"
+                  line.role === "onca" ? "text-card-signal" : "text-card-faint"
                 )}
               >
                 {line.role}
@@ -202,7 +203,7 @@ export function AgentCard() {
           className={cn(
             "data min-h-10 shrink-0 rounded-lg px-4 text-[0.78rem] transition-colors duration-150",
             "bg-card-ink text-white hover:opacity-90",
-            copied && "bg-signal text-white hover:opacity-100"
+            copied && "bg-card-signal text-white hover:opacity-100"
           )}
           aria-label="Copy build command"
         >

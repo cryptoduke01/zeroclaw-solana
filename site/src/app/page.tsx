@@ -19,7 +19,7 @@ export default function HomePage() {
         <HeroField />
 
         <div className="relative z-10 mx-auto grid w-full max-w-6xl items-center gap-12 lg:grid-cols-[1fr_1.05fr] lg:gap-10 xl:gap-14">
-          <div className="max-w-xl lg:max-w-none">
+          <div className="min-w-0 max-w-xl lg:max-w-none">
             <h1 className="text-[clamp(2.5rem,5.5vw,4.5rem)] font-semibold leading-[1.04] tracking-[-0.03em] text-ink">
               The agent proposes.
               <br />
@@ -57,7 +57,7 @@ export default function HomePage() {
             </a>
           </div>
 
-          <div className="flex w-full justify-start lg:justify-end lg:pl-2">
+          <div className="flex w-full min-w-0 justify-start lg:justify-end lg:pl-2">
             <AgentCard />
           </div>
         </div>

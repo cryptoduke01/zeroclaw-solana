@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useId, useState } from "react";
+import { GitHubIcon } from "@/components/github-icon";
 import { Logo } from "@/components/logo";
 import { ThemeToggle } from "@/components/theme-toggle";
 import { REPO, cn } from "@/lib/utils";
@@ -78,9 +79,10 @@ export function SiteNav() {
             href={REPO}
             target="_blank"
             rel="noopener noreferrer"
-            className="github-pill hidden min-h-10 items-center rounded-full px-3.5 text-[0.86rem] text-ink transition-colors duration-150 sm:inline-flex"
+            className="github-pill hidden min-h-10 min-w-10 items-center justify-center rounded-full text-ink transition-colors duration-150 sm:inline-flex"
+            aria-label="Onca on GitHub"
           >
-            GitHub
+            <GitHubIcon />
           </a>
           <button
             type="button"
@@ -141,8 +143,9 @@ export function SiteNav() {
             target="_blank"
             rel="noopener noreferrer"
             onClick={() => setOpen(false)}
-            className="rounded-xl px-4 py-3 text-[1.02rem] text-ink transition-colors duration-150 hover:bg-surface-2"
+            className="inline-flex items-center gap-3 rounded-xl px-4 py-3 text-[1.02rem] text-ink transition-colors duration-150 hover:bg-surface-2"
           >
+            <GitHubIcon className="text-ink-dim" />
             GitHub
           </a>
         </nav>
