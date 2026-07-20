@@ -18,7 +18,7 @@ ladder** — the agent *proposes*, a human *disposes*:
 |---|---|---|---|
 | [`solana-core`](crates/solana-core) | — | none | Shared substrate (Track E). Base58, JSON-RPC shaping, pubkey, amount math. Pure Rust, host-tested, imported by every plugin below. |
 | [`solana-pay-request`](plugins/solana-pay-request) | **T1** | **none** | Chat → Solana Pay URL + QR. Human signs. Enforces mint allowlist + max amount. ✅ shipping |
-| `token-risk-check` | **T0** | RPC key | Mint/freeze authority, holder concentration, Token-2022 hooks → red/amber/green. 🔜 |
+| [`token-risk-check`](plugins/token-risk-check) | **T0** | RPC key | Mint/freeze authority, holder concentration, Token-2022 hooks → red/amber/green. ✅ shipping |
 | `payment-watch` | **T0** | RPC key | Watch an address+reference; fire an inbound event when an invoice is paid. 🔜 |
 
 No plugin here takes a raw private key. No plugin here can move funds it was not
@@ -75,7 +75,7 @@ rustup target add wasm32-wasip2
 
 - [x] `solana-core` — base58, pubkey, JSON-RPC over a mockable transport, amount + output shaping. 10 tests green.
 - [x] `solana-pay-request` (T1) — full: pure core, wasm component, host tests, prompt-injection transcript, manifest, README.
-- [ ] `token-risk-check` (T0) — in progress.
+- [x] `token-risk-check` (T0) — full: pure analysis core (mockable RPC), wasm component, 11 tests, fail-closed honeypot transcript, manifest, README.
 - [ ] `payment-watch` (T0, SOP-triggered) — planned, closes the payments loop.
 - [ ] Demo video (Telegram agent) + submission write-up.
 

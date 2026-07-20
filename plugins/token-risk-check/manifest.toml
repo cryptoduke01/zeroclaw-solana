@@ -1,0 +1,10 @@
+name = "token-risk-check"
+version = "0.1.0"
+description = "Red/amber/green safety check for any Solana mint: mint/freeze authority, Token-2022 honeypot extensions, holder concentration"
+author = "cryptoduke01"
+wasm_path = "token_risk_check.wasm"
+capabilities = ["tool"]
+# http_client: outbound JSON-RPC to the operator's Solana endpoint (TLS host-side).
+# config_read: read `rpc_url` from this plugin's own config section. No key is
+# ever hardcoded; the endpoint may embed an API key and is never logged.
+permissions = ["http_client", "config_read"]
