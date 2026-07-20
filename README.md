@@ -4,9 +4,6 @@ Onca is a set of Solana tools for the [ZeroClaw](https://github.com/zeroclaw-lab
 agent runtime. The tools let an agent handle money. They also keep the agent
 safe while it does so.
 
-The documentation follows Simplified Technical English (ASD-STE100). See
-[docs/writing-style.md](docs/writing-style.md).
-
 ## The name
 
 Onca comes from *onça*, the Portuguese word for the jaguar. The jaguar is the

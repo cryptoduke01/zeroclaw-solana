@@ -1,7 +1,7 @@
 # Install and run
 
 This guide is for an operator who runs a ZeroClaw agent and wants to add the
-Onca tools. It follows Simplified Technical English (ASD-STE100).
+Onca tools.
 
 ## Before you start
 
