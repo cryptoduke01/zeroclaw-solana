@@ -63,13 +63,39 @@ release profile uses `opt-level = "s"`, `lto = true`, `strip = true`, and
 `codegen-units = 1`. These settings keep `solana-pay-request` near 210 KB and
 the two RPC plugins under 370 KB.
 
+## Hand-rolled transaction assembly, and proof it works
+
+`solana-sdk` cannot build transactions here, so `onca-core` assembles them by
+hand: the compact-u16 (ShortVec) length prefix, the legacy message layout
+(header, account keys ordered by signer/writable role, blockhash, compiled
+instructions), the unsigned-transaction wrapper with zeroed signature slots, the
+SPL Memo instruction, and the durable-nonce `AdvanceNonceAccount` that keeps an
+approval-gated transaction valid while a human takes their time to sign (trap
+#1). The unit tests check this against RFC 4648 (base64) and the documented
+compact-u16 vectors.
+
+Structural tests are necessary but not sufficient — a byte can be wrong in a way
+that still passes a length check. So the encoding is proven against the real
+runtime. `cargo run --example memo_tx` emits an unsigned transaction; sent to
+devnet `simulateTransaction` (with `sigVerify: false`, `replaceRecentBlockhash:
+true`), Solana itself deserialized it, recognized the fee payer as the signer,
+and ran the Memo program:
+
+```
+err: null
+Program MemoSq4gqABAXKb96qnH8TysNcWxMyWCqXgDLGmfcHr invoke [1]
+Program log: Signed by 7xKXtg2CW87d97TXJSDpbD5jBkheTqA83TZRuJosgAsU
+Program log: Memo (len 53): "onca:attest s=bme280-a v=23.4 u=C seq=42 t=1753000000"
+Program MemoSq4gqABAXKb96qnH8TysNcWxMyWCqXgDLGmfcHr success
+```
+
+The hand-rolled bytes are a transaction Solana accepts, not just one that
+passes our own tests.
+
 ## Still ahead
 
-A signed-transfer builder would need two more things. The first is versioned
-(v0) transaction assembly by hand: the compact-u16 arrays, the message header,
-and the address-table lookups, all encoded by hand, because the SDK is not
-available. The second is durable nonce accounts. A durable nonce keeps a
-transaction valid in the gap between the moment the agent builds it and the
-moment a person approves it. The plan is to read the nonce account, use its
-stored blockhash, and make the first instruction an `AdvanceNonceAccount`. Notes
-will follow when this exists.
+Two extensions, both on top of the same engine. The first is versioned (v0)
+messages with address-table lookups, for transactions that touch more accounts
+than a legacy message can index. The second is a Squads multisig proposal path,
+so the agent proposes a transfer and a human approves it from their phone — the
+pattern where the agent never holds a key at all.
