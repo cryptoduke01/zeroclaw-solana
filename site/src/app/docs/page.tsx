@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import type { ReactNode } from "react";
+import { CodeBlock as Code } from "@/components/code-block";
 import { REPO } from "@/lib/utils";
 
 export const metadata: Metadata = {
@@ -23,14 +24,6 @@ const plugins = [
   { name: "depin-attest", tier: "T1 · build", href: `${REPO}/tree/main/plugins/depin-attest` },
   { name: "onca-core", tier: "core", href: `${REPO}/tree/main/crates/onca-core` },
 ];
-
-function Code({ children }: { children: ReactNode }) {
-  return (
-    <pre className="data mt-5 overflow-x-auto rounded-xl border border-line bg-void p-4 text-[0.82rem] leading-[1.7] text-ink sm:p-5">
-      {children}
-    </pre>
-  );
-}
 
 function H2({ id, children }: { id: string; children: ReactNode }) {
   return (
@@ -172,6 +165,10 @@ export default function DocsPage() {
                 <td className={`${cell} data text-ink`}>payment-watch</td>
                 <td className={cell}>amount checked in base units; scan every signature</td>
               </tr>
+              <tr className="border-b border-line">
+                <td className={`${cell} data text-ink`}>depin-attest</td>
+                <td className={cell}>reading bounds + monotonic replay guard; unsigned tx only</td>
+              </tr>
             </tbody>
           </table>
         </div>
@@ -196,6 +193,11 @@ export default function DocsPage() {
             dust and pending for a failed transaction. It never returns paid from a
             message alone.
           </li>
+          <li>
+            <span className="data text-ink">depin-attest</span> refuses a reading
+            outside the configured bounds and a sequence that does not move forward,
+            so a fabricated or replayed reading is never attested.
+          </li>
         </ul>
 
         <H3>What a secret can reach</H3>
@@ -212,7 +214,7 @@ export default function DocsPage() {
             <tbody className="text-ink-dim">
               <tr className="border-b border-line">
                 <td className={cell}>RPC URL with API key</td>
-                <td className={`${cell} data`}>token-risk-check, payment-watch</td>
+                <td className={`${cell} data`}>token-risk-check, payment-watch, depin-attest</td>
                 <td className={cell}>read access to a node, plus RPC quota use</td>
               </tr>
               <tr className="border-b border-line">
